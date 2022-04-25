@@ -150,6 +150,7 @@ export CHART_PACKAGE=$CHART_REF-$RELEASE_VERSION.tgz
 
 mkdir -p $CHART_EXPORT_PATH
 
+helm version --short | egrep ^v3\.[7-9] > /dev/null || (echo "need helm version 3.7 or newer" ;exit 1) &&\
 helm pull oci://$CHART_REPO --version $RELEASE_VERSION -d $CHART_EXPORT_PATH &&\
 tar xvf $CHART_EXPORT_PATH/$CHART_PACKAGE -C $CHART_EXPORT_PATH &&\
 rm -f $CHART_EXPORT_PATH/$CHART_PACKAGE

@@ -46,6 +46,7 @@ Deploy the ACK service controller for Amazon APIGatewayv2 using the [apigatewayv
 Download it to your workspace using the following command:
 
 ```bash
+helm version --short | egrep ^v3\.[7-9] > /dev/null || (echo "need helm version 3.7 or newer" ;exit 1) &&\
 helm pull oci://public.ecr.aws/aws-controllers-k8s/apigatewayv2-chart --version=v0.0.17
 ````
 

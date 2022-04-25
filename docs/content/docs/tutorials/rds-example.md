@@ -42,6 +42,7 @@ This guide assumes that you have:
 You can deploy the ACK service controller for Amazon RDS using the [rds-chart Helm chart](https://gallery.ecr.aws/aws-controllers-k8s/rds-chart). You can download it to your workspace using the following command:
 
 ```bash
+helm version --short | egrep ^v3\.[7-9] > /dev/null || (echo "need helm version 3.7 or newer" ;exit 1) &&\
 helm pull oci://public.ecr.aws/aws-controllers-k8s/rds-chart --version=v0.0.20
 ````
 
