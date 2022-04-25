@@ -51,8 +51,9 @@ export CHART_PACKAGE=$CHART_REF-$RELEASE_VERSION.tgz
 
 mkdir -p $CHART_EXPORT_PATH
 
-helm pull oci://$CHART_REPO --version $RELEASE_VERSION -d $CHART_EXPORT_PATH
-tar xvf $CHART_EXPORT_PATH/$CHART_PACKAGE -C $CHART_EXPORT_PATH
+helm pull oci://$CHART_REPO --version $RELEASE_VERSION -d $CHART_EXPORT_PATH &&\
+tar xvf $CHART_EXPORT_PATH/$CHART_PACKAGE -C $CHART_EXPORT_PATH &&\
+rm -f $CHART_EXPORT_PATH/$CHART_PACKAGE
 ```
 
 {{% hint type="info" title="Specify a release version" %}}
